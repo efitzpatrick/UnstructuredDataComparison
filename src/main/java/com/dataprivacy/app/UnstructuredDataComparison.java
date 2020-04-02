@@ -1,13 +1,12 @@
-
 package com.dataprivacy.app;
 
-public class App {
+public class UnstructuredDataComparison {
     public static void main(String[] args) {
-        App myApp = new App();
-        System.out.println(myApp.getGreeting());
+        Algorithms ska, sld, ma;
     }
 
     public String getGreeting() {
         return "Hi. I'm a Foo!";
     }
+
 }
