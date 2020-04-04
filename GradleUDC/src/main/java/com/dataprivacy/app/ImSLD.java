@@ -9,7 +9,7 @@ public class ImSLD implements Algorithms {
 
     }
 
-    public T setData()
+    public <T> T setData()
     {
         return null;
     }
@@ -19,9 +19,7 @@ public class ImSLD implements Algorithms {
 
     }
 
-    //public T[][][]
-
-    public boolean checkKAnonymous()
+    public boolean checkKAnonymous(int k)
     {
         return false;
     }

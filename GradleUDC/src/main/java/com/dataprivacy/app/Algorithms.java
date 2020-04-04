@@ -1,10 +1,11 @@
 package com.dataprivacy.app;
+import java.lang.reflect.Type;
 import java.time.Duration;
 
 public interface Algorithms {
-    T setData();
+    <T> T setData();
     void run();
-    boolean checkKAnonymous();
+    boolean checkKAnonymous(int k);
     float checkDataLoss();
     Duration checkRuntime();
 }

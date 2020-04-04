@@ -9,18 +9,19 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public T setData()
+    public <T> T setData()
     {
         return null;
     }
 
-    public T aggregate (T set)
+    public <E> E aggregate (Class<E> set, int k)
     {
+        int i = 0;
         return null;
     }
 
 
-    public boolean checkKAnonymous()
+    public boolean checkKAnonymous(int k)
     {
         return false;
     }
