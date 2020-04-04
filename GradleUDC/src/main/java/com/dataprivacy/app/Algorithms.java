@@ -3,7 +3,7 @@ import java.lang.reflect.Type;
 import java.time.Duration;
 
 public interface Algorithms {
-    <T> T setData();
+    String[][] setData();
     void run();
     boolean checkKAnonymous(int k);
     float checkDataLoss();
