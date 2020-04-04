@@ -9,7 +9,7 @@ public class ImSKA implements Algorithms {
 
     }
 
-    public T[][] setData()
+    public T setData()
     {
         return null;
     }
@@ -26,7 +26,7 @@ public class ImSKA implements Algorithms {
         return false;
     }
 
-    public float checkDataloss()
+    public float checkDataLoss()
     {
         return 0;
     }
