@@ -1,7 +1,6 @@
 package com.dataprivacy.app;
 
 import java.time.Duration;
-import java.util.Collection;
 
 public class MicroAggregation implements Algorithms {
 
@@ -10,24 +9,24 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public void setData()
+    public <T> T setData()
     {
         return null;
     }
 
-    public void aggregate()
+    public <E> E aggregate (Class<E> set, int k)
     {
-
+        int i = 0;
+        return null;
     }
 
-    //public T[][][]
 
-    public boolean checkKAnonymous()
+    public boolean checkKAnonymous(int k)
     {
         return false;
     }
 
-    public float checkDataloss()
+    public float checkDataLoss()
     {
         return 0;
     }
