@@ -19,10 +19,7 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public void cluster()
-    {
-
-    }
+    //public T[][][]
 
     public boolean checkKAnonymous()
     {
