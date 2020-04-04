@@ -9,24 +9,23 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public T[][] setData()
+    public T setData()
     {
         return null;
     }
 
-    public void aggregate()
+    public T aggregate (T set)
     {
-
+        return null;
     }
 
-    //public T[][][]
 
     public boolean checkKAnonymous()
     {
         return false;
     }
 
-    public float checkDataloss()
+    public float checkDataLoss()
     {
         return 0;
     }
