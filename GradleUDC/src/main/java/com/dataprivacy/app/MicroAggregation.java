@@ -9,9 +9,9 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public void setData()
+    public T[][] setData()
     {
-
+        return null;
     }
 
     public void aggregate()
@@ -29,7 +29,7 @@ public class MicroAggregation implements Algorithms {
         return false;
     }
 
-    public float checkDataLoss()
+    public float checkDataloss()
     {
         return 0;
     }
