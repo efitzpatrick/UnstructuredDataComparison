@@ -14,9 +14,13 @@ public class MicroAggregation implements Algorithms {
         return null;
     }
 
-    public String[][] aggregate (String[][] set, int k)
+    public String[][][] aggregate (String[][][] set, int k)
     {
-        int i = 0;
+        String[][][] agg = new String[0][0][0];
+        for(int i = 0; i < set.length; i++)
+        {
+
+        }
 
         return null;
     }
