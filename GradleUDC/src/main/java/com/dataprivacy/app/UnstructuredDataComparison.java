@@ -5,8 +5,4 @@ public class UnstructuredDataComparison {
         Algorithms ska, sld, ma;
     }
 
-    public String getGreeting() {
-        return "Hi. I'm a Foo!";
-    }
-
 }
