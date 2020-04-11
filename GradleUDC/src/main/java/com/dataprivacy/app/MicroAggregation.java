@@ -2,7 +2,7 @@ package com.dataprivacy.app;
 
 import java.time.Duration;
 
-public class MicroAggregation implements Algorithms {
+public class MicroAggregation extends Algorithms {
 
     public void run()
     {
