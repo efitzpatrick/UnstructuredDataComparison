@@ -9,14 +9,9 @@ public class ImSLD implements Algorithms {
 
     }
 
-    public <T> T setData()
+    public String[][] setData()
     {
         return null;
-    }
-
-    public void aggregate()
-    {
-
     }
 
     public boolean checkKAnonymous(int k)

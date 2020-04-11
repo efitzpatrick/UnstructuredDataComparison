@@ -9,14 +9,19 @@ public class MicroAggregation implements Algorithms {
 
     }
 
-    public <T> T setData()
+    public String[][] setData()
     {
         return null;
     }
 
-    public <E> E aggregate (Class<E> set, int k)
+    public String[][][] aggregate (String[][][] set, int k)
     {
-        int i = 0;
+        String[][][] agg = new String[0][0][0];
+        for(int i = 0; i < set.length; i++)
+        {
+
+        }
+
         return null;
     }
 
