@@ -2,7 +2,7 @@ package com.dataprivacy.app;
 
 import java.time.Duration;
 
-public class ImSLD implements Algorithms {
+public class ImSLD extends Algorithms {
 
     public void run()
     {
