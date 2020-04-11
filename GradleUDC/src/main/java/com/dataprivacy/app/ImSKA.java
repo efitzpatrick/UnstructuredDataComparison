@@ -2,7 +2,7 @@ package com.dataprivacy.app;
 
 import java.time.Duration;
 
-public class ImSKA implements Algorithms {
+public class ImSKA extends Algorithms {
 
     public void run()
     {
