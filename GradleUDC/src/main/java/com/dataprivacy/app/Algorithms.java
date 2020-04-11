@@ -9,22 +9,34 @@ public abstract class Algorithms {
         return null;
     }
     abstract void run();
+
     boolean checkKAnonymous(int k){
+        int[] tupleMarker = new int[processedData.length];
+        boolean isMatching = false;
         int anonCheck = 0;
         for(int i = 0; i < processedData.length; i++){
-            for(int m = 0; m < processedData[i].length; i++) {
-                if (isSensitive[i]) {
-                    for (int j = i; j < processedData.length; i++) {
-                        if (processedData[i][m] ==processedData[j][m]){
-                            anonCheck++;
+            if(tupleMarker[i] != 1) {
+                for (int j = 0; j < processedData.length; j++) {
+                    int n = 0;
+                    while (isMatching && n < processedData[i].length) {
+                        if (processedData[i][n] != processedData[j][n]) {
+                            isMatching = false;
                         }
+                        n++;
                     }
-                    if (anonCheck >= k) {
-                        return false;
+                    if (isMatching) {
+                        anonCheck++;
+                        tupleMarker[i] = 1;
+                        tupleMarker[j] = 1;
                     }
-                    anonCheck = 0;
+                    isMatching = true;
                 }
+                if(anonCheck < k){
+                    return false;
+                }
+                anonCheck = 0;
             }
+
         }
         return true;
     }

@@ -33,7 +33,7 @@ public class MicroAggregation extends Algorithms {
         int y = 0;
         for(int m = 0; m < data.length; m++) {
             while (!newGroup) {
-                for (int n = 0; n < data[i].length; i++) {
+                for (int n = 0; n < data[i].length; n++) {
                     while (!restOfGroup) {
                         if (data[i][n] == data[j][n]) {
                             anonCheck++;
@@ -42,7 +42,7 @@ public class MicroAggregation extends Algorithms {
                             restOfGroup = true;
                         }
                     }
-                    if(anonCheck >= k){
+                    if(anonCheck < k){
                         return false;
                     }
                     anonCheck = 0;
