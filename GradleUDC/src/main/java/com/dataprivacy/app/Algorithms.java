@@ -3,6 +3,8 @@ import java.lang.reflect.Type;
 import java.time.Duration;
 
 public abstract class Algorithms {
+    String[][] processedData;
+
     String[][] setData(){
         return null;
     }
