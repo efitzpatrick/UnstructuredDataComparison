@@ -9,12 +9,6 @@ public class ImSKA extends Algorithms {
 
     }
 
-    public String[][] setData()
-    {
-        return null;
-    }
-
-
     public boolean checkKAnonymous(int k)
     {
         return false;
