@@ -42,7 +42,7 @@ public class MicroAggregation extends Algorithms {
                 for (int j = 0; j < set.length; j++) {
                     int n = 0;
                     while (isMatching && n < set[i].length) {
-                        if (set[i][n] != set[j][n]) {
+                        if (!set[i][n].equals(set[j][n])) {
                             isMatching = false;
                         }
                         n++;
