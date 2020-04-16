@@ -4,7 +4,7 @@ import java.time.Duration;
 
 public class ImSKA extends Algorithms {
 
-    public void run()
+    public void run(String[][] data, int k)
     {
         //filter quasi-identifiers from input file
         //rearrange columns in ascending order of numbers of unique values in it
@@ -17,7 +17,7 @@ public class ImSKA extends Algorithms {
         return false;
     }
 
-    public float checkDataLoss()
+    public float checkDataLoss(String[][] data)
     {
         return 0;
     }

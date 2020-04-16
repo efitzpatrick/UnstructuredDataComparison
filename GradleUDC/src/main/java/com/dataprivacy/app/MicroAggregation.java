@@ -83,10 +83,7 @@ public class MicroAggregation extends Algorithms {
         return true;
     }
 
-    public float checkDataLoss()
-    {
-        return 0;
-    }
+
 
     public Duration checkRuntime()
     {

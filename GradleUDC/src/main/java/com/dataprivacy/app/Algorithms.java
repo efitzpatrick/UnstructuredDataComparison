@@ -5,10 +5,8 @@ import java.time.Duration;
 public abstract class Algorithms {
     String[][] processedData;
     boolean[] isSensitive;
-    String[][] setData(){
-        return null;
-    }
-    abstract void run();
+    String[][] setData() {return null;}
+    abstract void run(String[][] data, int k);
 
     boolean checkKAnonymous(int k){
         int[] tupleMarker = new int[processedData.length];
@@ -41,5 +39,24 @@ public abstract class Algorithms {
         return true;
     }
 
-    abstract float checkDataLoss();
+    public float checkDataLoss(String[][] set)
+    {
+        int censored = 0;
+        int uncensored = 0;
+        int index = 0;
+        for(int i = 0; i < set.length; i++){
+            for(int j = 0; j < set[i].length; j++) {
+                while (set[i][j].charAt(index) < set[i][j].length()) {
+                    if (set[i][j].charAt(index) != '*') {
+                        censored++;
+                    } else {
+                        uncensored++;
+                    }
+                    index++;
+                }
+                index = 0;
+            }
+        }
+        return (float)(censored/(censored + uncensored));
+    }
 }
