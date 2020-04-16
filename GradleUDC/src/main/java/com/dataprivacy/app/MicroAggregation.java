@@ -2,12 +2,29 @@ package com.dataprivacy.app;
 import java.util.Arrays;
 import java.time.Duration;
 
+
 public class MicroAggregation extends Algorithms {
+    int numAggs = 0;
     int[] setStructure;
     boolean firstAggBoolean = true;
-    public void run()
+    public void run(String[][] set, int k)
     {
-
+        //initial anonymization
+        while(numAggs != 1){
+            aggregate(set, k);
+            for(int i = 0; i < numAggs; i += set.length/numAggs){
+                if(i + set.length/numAggs > set.length){
+                    if(!microKAnonymous(Arrays.copyOfRange(set, i, set.length), k)){
+                        //if some section isn't k-anonymous, we need to re-anonymize
+                    }
+                }
+                else {
+                    if(!microKAnonymous(Arrays.copyOfRange(set, i, i + set.length/numAggs), k)){
+                        //if final section isn't k-anonymous, we need to re-anonymize
+                    }
+                }
+            }
+        }
     }
 
     public String[][] aggregate (String[][] set, int k) {
@@ -16,10 +33,12 @@ public class MicroAggregation extends Algorithms {
             setStructure = new int[set.length];
             for(int x = 0; x < setStructure.length; x++){
                 setStructure[x] = x/(16*k);
+                numAggs = x/16/k;
             }
         }
         for(int x = 0; x < setStructure.length; x++){
             setStructure[x] = x/8;
+            numAggs /= 8;
         }
         for(int i = 0; i < set.length; i++) {
             timerCounter = setStructure[i] - setStructure[i-1];
