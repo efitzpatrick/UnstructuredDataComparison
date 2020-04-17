@@ -5,7 +5,7 @@ import java.time.Duration;
 
 public class ImSLD extends Algorithms {
 
-    public void run()
+    public void run(String[][] data, int k)
     {
 
     }
@@ -20,7 +20,7 @@ public class ImSLD extends Algorithms {
         return false;
     }
 
-    public float checkDataLoss()
+    public float checkDataLoss(String[][] data)
     {
         return 0;
     }
