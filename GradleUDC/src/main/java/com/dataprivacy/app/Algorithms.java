@@ -11,6 +11,8 @@ public abstract class Algorithms {
     String[][] processedData;
     boolean[] isSensitive;
 
+
+
     String[][] setData() {
         try {
             PigServer pigServer = new PigServer(ExecType.MAPREDUCE);
@@ -85,6 +87,11 @@ public abstract class Algorithms {
             }
         }
         return (float)(censored/(censored + uncensored));
+    }
+
+    public long runTime(long start, long end)
+    {
+        return end - start;
     }
 
 }

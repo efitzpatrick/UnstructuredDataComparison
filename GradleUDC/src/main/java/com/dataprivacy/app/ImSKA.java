@@ -8,6 +8,7 @@ public class ImSKA extends Algorithms {
 
     public void run(String[][] data, int k)
     {
+        long sKAStartTime = System.nanoTime();
         //processedData is a String[]
 
         //filter quasi-identifiers from input file
@@ -23,7 +24,7 @@ public class ImSKA extends Algorithms {
             //merged equivalence class = merged equivalence class + eq class
             //if merged equivalence class
                 //ncp_eq = ncp(mrged equivalence class)
-
+        long sKAEndTime = System.nanoTime();
     }
 
     private void pigTry(){
@@ -38,10 +39,5 @@ public class ImSKA extends Algorithms {
     public float checkDataLoss(String[][] data)
     {
         return 0;
-    }
-
-    public Duration checkRuntime()
-    {
-        return null;
     }
 }

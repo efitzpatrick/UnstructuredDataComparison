@@ -7,7 +7,11 @@ public class ImSLD extends Algorithms {
 
     public void run(String[][] data, int k)
     {
+        long sLDStartTime = System.nanoTime();
 
+
+
+        long sLDEndTime = System.nanoTime();
     }
 
     public String[][] setData()
@@ -23,10 +27,5 @@ public class ImSLD extends Algorithms {
     public float checkDataLoss(String[][] data)
     {
         return 0;
-    }
-
-    public Duration checkRuntime()
-    {
-        return null;
     }
 }

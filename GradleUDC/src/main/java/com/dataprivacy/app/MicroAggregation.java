@@ -9,6 +9,7 @@ public class MicroAggregation extends Algorithms {
     boolean firstAggBoolean = true;
     public void run(String[][] set, int k)
     {
+        long microAggStartTime = System.nanoTime();
         anonymize(set, k, super.isSensitive);
         while(numAggs != 1){
             aggregate(set, k);
@@ -25,6 +26,7 @@ public class MicroAggregation extends Algorithms {
                 }
             }
         }
+        long microAggEndTime = System.nanoTime();
     }
 
     public String[][] aggregate (String[][] set, int k) {
