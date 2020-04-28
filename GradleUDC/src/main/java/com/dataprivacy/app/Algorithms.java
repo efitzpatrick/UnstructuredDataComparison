@@ -27,7 +27,10 @@ public abstract class Algorithms {
 
     public static void runQuery(PigServer pigServer) {
         try {
-            pigServer.registerQuery("records = LOAD 'input/ncdc/micro-tab/sample.txt;");
+            pigServer.registerQuery("data = " +
+                            "LOAD 'hdfs://localhost:9000/pig_data/twitterusers.txt' USING PigStorage(';')" +
+                    "as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray," +
+                    " profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long");
             pigServer.registerQuery("filtered records = FILTER records BY temperature != 9999;");
         } catch(Exception e) {
             e.printStackTrace();
