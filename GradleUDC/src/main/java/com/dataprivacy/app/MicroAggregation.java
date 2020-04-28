@@ -55,7 +55,7 @@ public class MicroAggregation extends Algorithms {
 
     boolean microKAnonymous(String[][] set, int k){
         int[] tupleMarker = new int[set.length];
-        boolean isMatching = false;
+        boolean isMatching = true;
         int anonCheck = 0;
         for(int i = 0; i < set.length; i++){
             if(tupleMarker[i] != 1) {
