@@ -1,11 +1,10 @@
 package com.dataprivacy.app;
 import java.lang.reflect.Type;
-import java.time.Duration;
 import java.util.Properties;
 
-import org.apache.pig.ExecType;
-import org.apache.pig.PigServer;
-import org.apache.hadoop.io.*;
+//import org.apache.pig.ExecType;
+//import org.apache.pig.PigServer;
+//import org.apache.hadoop.io.*;
 
 public abstract class Algorithms {
     String[][] processedData;
@@ -32,7 +31,10 @@ public abstract class Algorithms {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
     }
+
+
 
     abstract void run(String[][] data, int k);
 

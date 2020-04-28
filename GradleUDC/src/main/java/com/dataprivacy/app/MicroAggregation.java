@@ -1,8 +1,5 @@
 package com.dataprivacy.app;
 import java.util.Arrays;
-import java.time.Duration;
-
-
 public class MicroAggregation extends Algorithms {
     int numAggs = 0;
     int[] setStructure;
@@ -27,6 +24,8 @@ public class MicroAggregation extends Algorithms {
             }
         }
         long microAggEndTime = System.nanoTime();
+        System.out.println(runTime(microAggStartTime,microAggEndTime));
+        System.out.println(set);
     }
 
     public String[][] aggregate (String[][] set, int k) {
@@ -84,16 +83,7 @@ public class MicroAggregation extends Algorithms {
         }
         return true;
     }
-
-
-
-    public Duration checkRuntime()
-    {
-        return null;
-    }
-
-
-    public String[][] anonymize(String[][] set, int k, boolean[] isSensitive){
+        public String[][] anonymize(String[][] set, int k, boolean[] isSensitive){
         int j = numAggs;
         String str = "";
         int[] identity = new int[set.length];
