@@ -9,18 +9,18 @@ public class MicroAggregation extends Algorithms {
     boolean firstAggBoolean = true;
     public void run(String[][] set, int k)
     {
-        //initial anonymization
+        anonymize(set, k, super.isSensitive);
         while(numAggs != 1){
             aggregate(set, k);
             for(int i = 0; i < numAggs; i += set.length/numAggs){
                 if(i + set.length/numAggs > set.length){
                     if(!microKAnonymous(Arrays.copyOfRange(set, i, set.length), k)){
-                        //if some section isn't k-anonymous, we need to re-anonymize
+                        anonymize(set, k, super.isSensitive);
                     }
                 }
                 else {
                     if(!microKAnonymous(Arrays.copyOfRange(set, i, i + set.length/numAggs), k)){
-                        //if final section isn't k-anonymous, we need to re-anonymize
+                        anonymize(set, k, super.isSensitive);
                     }
                 }
             }
@@ -90,4 +90,62 @@ public class MicroAggregation extends Algorithms {
         return null;
     }
 
+
+    public String[][] anonymize(String[][] set, int k, boolean[] isSensitive){
+        int j = numAggs;
+        String str = "";
+        int[] identity = new int[set.length];
+        boolean[] identityChecker = new boolean[j];
+        if(numAggs == 0){
+            j = set.length/16/k;
+        }
+        for(int i = 0; i < set.length; i+=j){
+            for(int n = i; n < i+j; n++) {
+                for (int m = 0; m < set[0].length; m++) {
+                    if (isSensitive[m]) {
+                        for(int s = 0; s < identityChecker.length; s++){
+                            identityChecker[s] = false;
+                        }
+                        for(int p = n; p < i+j; p++){
+                            if(identity[p] == 0){
+                                identity[0] = 1;
+                                if(p != 0){
+                                    identity[p] = identity[p-1] + 1;
+                                }
+                                while(!identityChecker[identity[p]]){
+                                    int r = 0;
+                                    identity[p + r] = identity[p];
+                                    if(set[p][m] != set[p+r][m]){
+                                        int v = 0;
+                                        while(set[p][m] != set[p+1][m]) {
+                                            if (set[p][m].charAt(v) != set[p + 1][m].charAt(v)) {
+                                                for(int w = 0; w < v; w++) {
+                                                   str+= set[p][m].charAt(w);
+                                                }
+                                                for(int y = v; y < set[p][m].length(); y++){
+                                                    str+='*';
+                                                }
+                                            }
+                                            v++;
+                                        }
+                                        for(int t = p+1; t < p + k; t++){
+                                               set[t][m] = set[p][m];
+                                       }
+                                    }
+                                    else {
+                                        r++;
+                                        if (r == k) {
+                                            identityChecker[identity[p]] = true;
+                                            r = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return set;
+    }
 }
