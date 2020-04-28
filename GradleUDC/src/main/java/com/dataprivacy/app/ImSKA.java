@@ -23,7 +23,7 @@ public class ImSKA extends Algorithms {
         //for each row in eq class
             //merged equivalence class = merged equivalence class + eq class
             //if merged equivalence class
-                //ncp_eq = ncp(mrged equivalence class)long sKAEndTime = System.nanoTime();
+                //ncp_eq = ncp(mrged equivalence class)
         long sKAEndTime = System.nanoTime();
     }
 
@@ -31,13 +31,5 @@ public class ImSKA extends Algorithms {
 
     }
 
-    public Duration checkRuntime()
-    {
-        return null;
-    }
 
-    public String[][] setData()
-    {
-        return null;
-    }
 }
