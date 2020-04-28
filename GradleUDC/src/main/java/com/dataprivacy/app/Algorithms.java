@@ -75,7 +75,8 @@ public abstract class Algorithms {
                 while (set[i][j].charAt(index) < set[i][j].length()) {
                     if (set[i][j].charAt(index) != '*') {
                         censored++;
-                    } else {
+                    }
+                    else {
                         uncensored++;
                     }
                     index++;
@@ -85,4 +86,5 @@ public abstract class Algorithms {
         }
         return (float)(censored/(censored + uncensored));
     }
+
 }
