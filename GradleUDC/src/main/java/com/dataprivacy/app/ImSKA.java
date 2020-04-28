@@ -31,13 +31,5 @@ public class ImSKA extends Algorithms {
 
     }
 
-    public boolean checkKAnonymous(int k)
-    {
-        return false;
-    }
 
-    public float checkDataLoss(String[][] data)
-    {
-        return 0;
-    }
 }

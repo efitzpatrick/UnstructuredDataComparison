@@ -19,13 +19,5 @@ public class ImSLD extends Algorithms {
         return null;
     }
 
-    public boolean checkKAnonymous(int k)
-    {
-        return false;
-    }
 
-    public float checkDataLoss(String[][] data)
-    {
-        return 0;
-    }
 }
