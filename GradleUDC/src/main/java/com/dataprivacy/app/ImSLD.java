@@ -7,7 +7,11 @@ public class ImSLD extends Algorithms {
 
     public void run(String[][] data, int k)
     {
-
+        //rearrange columns in ascending order of numbers of unique values in it
+        //group by QID attributes
+        //create equivalence classes
+        //filter sensitive attributes from equivalence classes
+        //check if it is correct
     }
 
     public String[][] setData()
@@ -15,18 +19,6 @@ public class ImSLD extends Algorithms {
         return null;
     }
 
-    public boolean checkKAnonymous(int k)
-    {
-        return false;
-    }
 
-    public float checkDataLoss(String[][] data)
-    {
-        return 0;
-    }
 
-    public Duration checkRuntime()
-    {
-        return null;
-    }
 }
