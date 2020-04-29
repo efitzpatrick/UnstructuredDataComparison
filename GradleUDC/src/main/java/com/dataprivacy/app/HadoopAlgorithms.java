@@ -26,7 +26,7 @@ public abstract class HadoopAlgorithms extends Algorithms {
         pigServer.shutdown();
     }
 
-    private void setData(String path) {
+    public void setData(String path) {
         try {
             pigServer.registerQuery("data = " +
                     "LOAD '" + path + "' USING PigStorage(';')" +
