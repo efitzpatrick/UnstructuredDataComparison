@@ -8,7 +8,7 @@ public class MicroAggregation extends Algorithms {
     boolean firstAggBoolean = true;
     String[][] set;
 
-    public void setData(String path) throws FileNotFoundException {
+    private void setData(String path) throws FileNotFoundException {
         File f = new File(path);
         FileReader fReader = new FileReader(f);
         int r = 0;

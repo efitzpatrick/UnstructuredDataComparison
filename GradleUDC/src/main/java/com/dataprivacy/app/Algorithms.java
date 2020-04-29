@@ -11,7 +11,6 @@ import org.apache.hadoop.io.*;
 public abstract class Algorithms {
     String[][] processedData;
     boolean[] isSensitive = {true, false, false, true, false, false, false, false, true, true, false, false, false, true};
-    public abstract void setData(String path) throws FileNotFoundException;
 
     public abstract void run(String path, int k) throws IOException;
 
