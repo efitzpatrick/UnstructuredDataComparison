@@ -21,8 +21,8 @@ four_number = COUNT(four_distinct);
 
 name_num_concat = foreach data Generate CONCAT (name, name_number);
 id_num_concat = foreach data Generate CONCAT (id, id_number);
-profilepic_num_concat = foreach data Generate CONCAT (profilepic, profilepic_number);
-four_num_concat = foreach data Generate CONCAT (four, four_number);
+profilepic_num_concat = foreach data Generate CONCAT (profilepictureurl, profilepic_number);
+four_num_concat = foreach data Generate CONCAT (foursqr_id, four_number);
 
 
 --sort the data in ascending order of numbers of unique values in it
