@@ -1,34 +1,23 @@
 --Sentive types: twitter_id, name, profilepictureurl, foursqr_id
 -- processedData is a String[]
-data = LOAD '/user/root/input/twitterdata' USING PigStorage(';') as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray, profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long);
+data = LOAD '/user/root/input/twitterusers' USING PigStorage(';') as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray, profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long);
 --filter quasi-identifiers from input file
 qid_data = FOREACH data GENERATE id, name, profilepictureurl, foursqr_id;
 --rearrange columns in ascending order of numbers of unique values in it
-name_qid = FOREACH data GENERATE name;
-id_qid = FOREACH data GENERATE id;
-profilepic_qid = FOREACH data GENERATE profilepictureurl;
-four_qid = FOREACH data GENERATE foursqr_id;
+/*B = GROUP A BY f1;
+X = FOREACH B GENERATE COUNT(A);
 
-name_distict = DISTINCT name_qid;
-id_distict = DISTINCT id_qid;
-profilepic_distict = DISTINCT profilepic_qid;
-four_distict = DISTINCT four_qid;
+D = GROUP C BY a1;
+Result = FOREACH D GENERATE group, SUM(C.a3);*/
 
-name_number = COUNT(name_distinct);
-id_number = COUNT(id_distinct);
-profilepic_number = COUNT(profilepic_distinct);
-four_number = COUNT(four_distinct);
+B = GROUP qid_data by name;
+name_count = FOREACH B GENERATE COUNT(qid_data);
 
-name_num_concat = foreach data Generate CONCAT (name, name_number);
-id_num_concat = foreach data Generate CONCAT (id, id_number);
-profilepic_num_concat = foreach data Generate CONCAT (profilepictureurl, profilepic_number);
-four_num_concat = foreach data Generate CONCAT (foursqr_id, four_number);
+name_group = GROUP name_count by $0;
+name_sum = FOREACH name_group GENERATE COUNT(name_count);
 
-foreach_data = FOREACH data GENERATE id, name, profilepictureurl, foursqr_id;
-foreach_distinct = DISTINCT foreach_data;
-distinct_all = GROUP foreach_distinct ALL;
-dinstinct_num = foreach distinct_all GENERATE Count(foreach_data.id);
-DUMP distinct_num; --this is to check if this works
+
+
 
 --sort the data in ascending order of numbers of unique values in it
 --group above data by all attributes in QID_DATA
