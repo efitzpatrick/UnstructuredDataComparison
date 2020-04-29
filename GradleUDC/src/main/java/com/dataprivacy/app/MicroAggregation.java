@@ -1,40 +1,65 @@
 package com.dataprivacy.app;
+import java.io.*;
 import java.util.Arrays;
+
 public class MicroAggregation extends Algorithms {
     int numAggs = 0;
     int[] setStructure;
     boolean firstAggBoolean = true;
     String[][] set;
 
-    public void setData(String path){
-
+    public void setData(String path) throws FileNotFoundException {
+        File f = new File(path);
+        FileReader fReader = new FileReader(f);
+        int r = 0;
+        int c = 0;
+        while(true){
+            char temp = 0;
+            try {
+                if (!fReader.ready()) break;
+                temp = (char) fReader.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(temp != ';' && temp != '"'){
+                set[r][c] += temp;
+            }
+            else if (temp == ';'){
+                if(c == 13){
+                    c = 0;
+                    r++;
+                }
+                else{
+                    c++;
+                }
+            }
+        }
     }
 
-    public void run(int k)
+    public void run(String path, int k)
     {
         long microAggStartTime = System.nanoTime();
-        anonymize(set, k, super.isSensitive);
+        anonymize(k, super.isSensitive);
         while(numAggs != 1){
-            aggregate(set, k);
+            aggregate(k);
             for(int i = 0; i < numAggs; i += set.length/numAggs){
                 if(i + set.length/numAggs > set.length){
                     if(!microKAnonymous(Arrays.copyOfRange(set, i, set.length), k)){
-                        anonymize(set, k, super.isSensitive);
+                        anonymize(k, super.isSensitive);
                     }
                 }
                 else {
                     if(!microKAnonymous(Arrays.copyOfRange(set, i, i + set.length/numAggs), k)){
-                        anonymize(set, k, super.isSensitive);
+                        anonymize(k, super.isSensitive);
                     }
                 }
             }
         }
         long microAggEndTime = System.nanoTime();
         System.out.println(runTime(microAggStartTime,microAggEndTime));
-        System.out.println(set);
     }
 
-    public String[][] aggregate (String[][] set, int k) {
+    public String[][] aggregate (int k) {
         int timerCounter = 0;
         if(firstAggBoolean){
             setStructure = new int[set.length];
@@ -89,7 +114,7 @@ public class MicroAggregation extends Algorithms {
         }
         return true;
     }
-        public String[][] anonymize(String[][] set, int k, boolean[] isSensitive){
+        public String[][] anonymize(int k, boolean[] isSensitive){
         int j = numAggs;
         String str = "";
         int[] identity = new int[set.length];
