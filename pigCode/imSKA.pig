@@ -24,6 +24,11 @@ id_num_concat = foreach data Generate CONCAT (id, id_number);
 profilepic_num_concat = foreach data Generate CONCAT (profilepictureurl, profilepic_number);
 four_num_concat = foreach data Generate CONCAT (foursqr_id, four_number);
 
+foreach_data = FOREACH data GENERATE id, name, profilepictureurl, foursqr_id;
+foreach_distinct = DISTINCT foreach_data;
+dinstinct_num = Count(foreach_distinct);
+DUMP distinct_num; --this is to check if this works
+num_minsort = foreach distinct_num  Generate (foreach_distinct, distinct_num), MIN(distinct_num);
 
 --sort the data in ascending order of numbers of unique values in it
 --group above data by all attributes in QID_DATA
