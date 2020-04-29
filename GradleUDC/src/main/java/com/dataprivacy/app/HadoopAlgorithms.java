@@ -6,7 +6,7 @@ package com.dataprivacy.app;
 import java.util.Properties;
 
 public abstract class HadoopAlgorithms extends Algorithms {
-  /*  PigServer pigServer;
+    PigServer pigServer;
 
     public abstract void run(int k);
 
@@ -37,7 +37,7 @@ public abstract class HadoopAlgorithms extends Algorithms {
         }
     }
 
-   */
+
 }
 
 
