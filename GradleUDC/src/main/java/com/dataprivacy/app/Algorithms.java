@@ -1,4 +1,5 @@
 package com.dataprivacy.app;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.Properties;
 
@@ -10,9 +11,9 @@ public abstract class Algorithms {
     String[][] processedData;
     boolean[] isSensitive;
 
-    public abstract void setData(String path);
+    public abstract void setData(String path) throws FileNotFoundException;
 
-    public abstract void run(int k);
+    public abstract void run(String path, int k);
 
     boolean checkKAnonymous(int k){
         int[] tupleMarker = new int[processedData.length];
