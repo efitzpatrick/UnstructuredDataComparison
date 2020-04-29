@@ -2,7 +2,7 @@
 -- processedData is a String[]
 data = LOAD '/user/root/input/twitterusers' USING PigStorage(';') as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray, profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long);
 --filter quasi-identifiers from input file
-qid_data = FOREACH data GENERATE id, name, profilepictureurl, foursqr_id;
+qid_data = FOREACH data GENERATE name, profilepictureurl, foursqr_id, id;
 --rearrange columns in ascending order of numbers of unique values in it
 /*B = GROUP A BY f1;
 X = FOREACH B GENERATE COUNT(A);
@@ -10,12 +10,7 @@ X = FOREACH B GENERATE COUNT(A);
 D = GROUP C BY a1;
 Result = FOREACH D GENERATE group, SUM(C.a3);*/
 
-name_data = GROUP qid_data by name;
-distinct_name_data = DISTINCT name_data;
-name_count = FOREACH distinct_name_data GENERATE COUNT(qid_data);
 
-name_group = GROUP name_count by $0;
-name_sum = FOREACH name_group GENERATE COUNT(name_count);
 
 
 
