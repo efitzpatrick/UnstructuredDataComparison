@@ -4,7 +4,10 @@ data = LOAD '/user/root/input/twitterdata' USING PigStorage(';') as ( id:long, f
 --filter quasi-identifiers from input file
 qid_data = FOREACH data GENERATE id, name, profilepictureurl, foursqr_id;
 --rearrange columns in ascending order of numbers of unique values in it
-<HERE>
+QIDS = foreach data GENERATE $0, $9, $10, $13;
+Distinct_QIDS = DISTINCT QIDS;
+number = COUNT(Distinct_QIDS);
+
 
 --sort the data in ascending order of numbers of unique values in it
 --group above data by all attributes in QID_DATA
