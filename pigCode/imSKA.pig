@@ -9,7 +9,7 @@ X = FOREACH B GENERATE COUNT(A);
 
 D = GROUP C BY a1;
 Result = FOREACH D GENERATE group, SUM(C.a3);*/
-
+grouping = Group qid_data BY (name, profilepictureurl, foursqr_id, id);
 
 
 
