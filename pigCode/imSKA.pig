@@ -10,8 +10,9 @@ X = FOREACH B GENERATE COUNT(A);
 D = GROUP C BY a1;
 Result = FOREACH D GENERATE group, SUM(C.a3);*/
 
-B = GROUP qid_data by name;
-name_count = FOREACH B GENERATE COUNT(qid_data);
+name_data = GROUP qid_data by name;
+distinct_name_data = DISTINCT name_data;
+name_count = FOREACH distinct_name_data GENERATE COUNT(qid_data);
 
 name_group = GROUP name_count by $0;
 name_sum = FOREACH name_group GENERATE COUNT(name_count);
