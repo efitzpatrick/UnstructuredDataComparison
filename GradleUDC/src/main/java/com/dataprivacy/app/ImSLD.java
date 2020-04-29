@@ -15,14 +15,12 @@ public class ImSLD extends HadoopAlgorithms {
         //for each column{
         Object[] a = new Object[14];
         int[] numunique = new int[14];
-        try {
             for(int it = 0; it<14; it++){
                 pigServer.registerQuery("users = FOREACH data GENERATE $"+it);
                 pigServer.registerQuery("uniq_users = DISTINCT users");
                 pigServer.registerQuery("grouped_users = GROUP uniq_users ALL");
                 pigServer.registerQuery("uniq_user_count = FOREACH grouped_users GENERATE COUNT(uniq_users)");
                 numunique[it] = Integer.parseInt(("uniq_user_count"));
-            }
             for(int cc = 0; cc<15; cc++){
                 int smallest = 0;
                 for (int j = cc + 1; j < 15; j++)
