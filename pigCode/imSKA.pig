@@ -19,6 +19,12 @@ id_number = COUNT(id_distinct);
 profilepic_number = COUNT(profilepic_distinct);
 four_number = COUNT(four_distinct);
 
+name_num_concat = foreach data Generate CONCAT (name, name_number);
+id_num_concat = foreach data Generate CONCAT (id, id_number);
+profilepic_num_concat = foreach data Generate CONCAT (profilepic, profilepic_number);
+four_num_concat = foreach data Generate CONCAT (four, four_number);
+
+
 --sort the data in ascending order of numbers of unique values in it
 --group above data by all attributes in QID_DATA
 --for each group in group_QID
