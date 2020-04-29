@@ -1,14 +1,15 @@
 package com.dataprivacy.app;
 
-//import org.apache.pig.ExecType;
-//import org.apache.pig.PigServer;
+import org.apache.pig.ExecType;
+import org.apache.pig.PigServer;
 
+import java.io.IOException;
 import java.util.Properties;
 
 public abstract class HadoopAlgorithms extends Algorithms {
     PigServer pigServer;
 
-    public abstract void run(int k);
+    public abstract void run(String path, int k) throws IOException;
 
     public void startServer(String path) {
         try {
@@ -30,7 +31,7 @@ public abstract class HadoopAlgorithms extends Algorithms {
             pigServer.registerQuery("data = " +
                     "LOAD '" + path + "' USING PigStorage(';')" +
                     "as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray," +
-                    " profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long");
+                    " profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long);");
 
         } catch (Exception e) {
             e.printStackTrace();

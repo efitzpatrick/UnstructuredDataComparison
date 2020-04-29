@@ -5,7 +5,7 @@ import java.time.Duration;
 
 public class ImSLD extends HadoopAlgorithms {
 
-    public void run(String[][] data, int k)
+    public void run(String path, int k)
     {
         long sLDStartTime = System.nanoTime();
         //rearrange columns in ascending order of numbers of unique values in it
@@ -36,11 +36,5 @@ public class ImSLD extends HadoopAlgorithms {
     public String[][] setData()
     {
         return null;
-    }
-
-
-    @Override
-    public void run(int k) {
-
     }
 }
