@@ -4,7 +4,13 @@ public class MicroAggregation extends Algorithms {
     int numAggs = 0;
     int[] setStructure;
     boolean firstAggBoolean = true;
-    public void run(String[][] set, int k)
+    String[][] set;
+
+    public void setData(String path){
+
+    }
+
+    public void run(int k)
     {
         long microAggStartTime = System.nanoTime();
         anonymize(set, k, super.isSensitive);

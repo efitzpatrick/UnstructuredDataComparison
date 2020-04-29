@@ -4,7 +4,7 @@ import java.time.Duration;
 
 
 
-public class ImSKA extends Algorithms {
+public class ImSKA extends HadoopAlgorithms {
 
     public void run(String[][] data, int k)
     {
@@ -32,4 +32,8 @@ public class ImSKA extends Algorithms {
     }
 
 
+    @Override
+    public void run(int k) {
+
+    }
 }

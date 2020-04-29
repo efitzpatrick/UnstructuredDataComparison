@@ -3,7 +3,7 @@ package com.dataprivacy.app;
 import java.time.Duration;
 
 
-public class ImSLD extends Algorithms {
+public class ImSLD extends HadoopAlgorithms {
 
     public void run(String[][] data, int k)
     {
@@ -39,5 +39,8 @@ public class ImSLD extends Algorithms {
     }
 
 
+    @Override
+    public void run(int k) {
 
+    }
 }

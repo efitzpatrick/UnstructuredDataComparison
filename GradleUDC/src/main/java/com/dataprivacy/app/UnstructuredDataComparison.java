@@ -6,10 +6,11 @@ public class UnstructuredDataComparison {
         Algorithms imSKA, ImSLD, MicroAggregation;
 
         imSKA = new ImSKA();
-        imSKA.setData();
+        imSKA.setData("/user/root/input/twitteruser.txt");
 
         MicroAggregation microAgg = new MicroAggregation();
-        microAgg.run(args, 4);
+        microAgg.setData(args[0][0]); //<- This should be a path like up above is
+        microAgg.run(4);
     }
 
 }
