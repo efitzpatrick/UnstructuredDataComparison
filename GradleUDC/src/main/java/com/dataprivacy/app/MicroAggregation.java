@@ -36,8 +36,8 @@ public class MicroAggregation extends Algorithms {
         }
     }
 
-    public void run(String path, int k)
-    {
+    public void run(String path, int k) throws FileNotFoundException {
+        setData(path);
         long microAggStartTime = System.nanoTime();
         anonymize(k, super.isSensitive);
         while(numAggs != 1){

@@ -1,12 +1,12 @@
 package com.dataprivacy.app;
 
-import org.apache.pig.ExecType;
-import org.apache.pig.PigServer;
+//import org.apache.pig.ExecType;
+//import org.apache.pig.PigServer;
 
 import java.util.Properties;
 
 public abstract class HadoopAlgorithms extends Algorithms {
-    PigServer pigServer;
+  /*  PigServer pigServer;
 
     public abstract void run(int k);
 
@@ -36,6 +36,8 @@ public abstract class HadoopAlgorithms extends Algorithms {
             e.printStackTrace();
         }
     }
+
+   */
 }
 
 

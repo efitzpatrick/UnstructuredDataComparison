@@ -3,9 +3,9 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.Properties;
 
-import org.apache.pig.ExecType;
-import org.apache.pig.PigServer;
-import org.apache.hadoop.io.*;
+//import org.apache.pig.ExecType;
+//import org.apache.pig.PigServer;
+//import org.apache.hadoop.io.*;
 
 public abstract class Algorithms {
     String[][] processedData;
@@ -13,7 +13,7 @@ public abstract class Algorithms {
 
     public abstract void setData(String path) throws FileNotFoundException;
 
-    public abstract void run(String path, int k);
+    public abstract void run(String path, int k) throws FileNotFoundException;
 
     boolean checkKAnonymous(int k){
         int[] tupleMarker = new int[processedData.length];

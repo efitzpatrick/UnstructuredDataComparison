@@ -1,7 +1,9 @@
 package com.dataprivacy.app;
 
+import java.io.FileNotFoundException;
+
 public class UnstructuredDataComparison {
-    public static void main(String[][] args) {
+    public static void main(String[][] args) throws FileNotFoundException {
 
         Algorithms imSKA, ImSLD, MicroAggregation;
 
@@ -9,8 +11,7 @@ public class UnstructuredDataComparison {
         imSKA.setData("/user/root/input/twitteruser.txt");
 
         MicroAggregation microAgg = new MicroAggregation();
-        microAgg.setData(args[0][0]); //<- This should be a path like up above is
-        microAgg.run(4);
+        microAgg.run("", 4);
     }
 
 }
