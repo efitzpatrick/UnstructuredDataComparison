@@ -10,10 +10,14 @@ profilepic_qid = FOREACH data GENERATE profilepictureurl;
 four_qid = FOREACH data GENERATE foursqr_id;
 
 name_distict = DISTINCT name_qid;
-4 x
+id_distict = DISTINCT id_qid;
+profilepic_distict = DISTINCT profilepic_qid;
+four_distict = DISTINCT four_qid;
 
-name_number = COUNT(name_distinct)
-4x
+name_number = COUNT(name_distinct);
+id_number = COUNT(id_distinct);
+profilepic_number = COUNT(profilepic_distinct);
+four_number = COUNT(four_distinct);
 
 --sort the data in ascending order of numbers of unique values in it
 --group above data by all attributes in QID_DATA
