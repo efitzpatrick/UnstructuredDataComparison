@@ -2,6 +2,7 @@
 -- processedData is a String[]
 data = LOAD '/user/root/input/twitterusers' USING PigStorage(';') as ( id:long, firstlogin:long,  freetext:chararray, gender:chararray, groundtruth:int, language:chararray, lastactivity:long, lasttweet:chararray, location:chararray, name:chararray, profilepictureurl:chararray, screenname:chararray, timezone:chararray, foursqr_id:long);
 --filter quasi-identifiers from input file
+K = 4
 qid_data = FOREACH data GENERATE name, profilepictureurl, foursqr_id, id;
 --rearrange columns in ascending order of numbers of unique values in it
 /*B = GROUP A BY f1;
@@ -23,16 +24,27 @@ E = FOREACH group_qid{
     eqClass = qid_data + RECORD_COUNT;
 };
 
-
-
 --mergeEquivalenceClass = empty array size of eq_class
+-- straight up how i don't think Pig supports arrays
 
-        --for each row in eq class merged equivalence class = merged equivalence class + eq class
-MEQ = FOREACH EQClass GENERATE merged equivalenceclass array at that point, eqClass;
+ --for each row in eq class merged equivalence class = merged equivalence class + eq class
+M = FOREACH eqClass{
+    MEQ = FOREACH EQClass GENERATE (merged equivalenceclass array at that point)+ eqClass;
+    C = GENERATE COUNT(MEQ)
 
-            --if merged equivalence class
-                --ncp_eq = ncp(mrged equivalence class)
+    -- if the equivalence class is merged
+    IF C > 4{
+    -- NCP_EQ <== NCP(merged eq class)
+    -- reinitialize array with empty array of size EQ CLASS
+    }
+}
 
+-- find data loss
+GNCP = 0;
+FINAL = FOREACH NCP_EQ{
+GNCP = GNCP + NCP_EQ;
+}
+DUMP GNCP;
 /*
 DEFINE unique_value() RETURNS Y{
 --make a bag of all of the values in the column
