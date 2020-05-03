@@ -11,17 +11,22 @@ D = GROUP C BY a1;
 Result = FOREACH D GENERATE group, SUM(C.a3);*/
 grouping = Group qid_data BY (name, profilepictureurl, foursqr_id, id);
 
-
-
-
-
 --sort the data in ascending order of numbers of unique values in it
+QID_Data = ORDER grouping by $0, $1, $2, $3 DESC;
 --group above data by all attributes in QID_DATA
+group_QID = GROUP QID_Data by name;
+
 --for each group in group_QID
+EQClass = FOREACH group_QID GENERATE group_QID, COUNT(group_QID);
     --eqClass = group_qid + count(group_qid)
+
 --mergeEquivalenceClass = empty array size of eq_class
+
         --for each row in eq class
+MEQ = FOREACH EQClass GENERATE merged equivalenceclass array at that point, eqClass;
+
             --merged equivalence class = merged equivalence class + eq class
+
             --if merged equivalence class
                 --ncp_eq = ncp(mrged equivalence class)
 
