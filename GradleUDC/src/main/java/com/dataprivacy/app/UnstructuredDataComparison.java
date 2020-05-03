@@ -16,7 +16,7 @@ public class UnstructuredDataComparison {
         }
 
         MicroAggregation microAgg = new MicroAggregation();
-        microAgg.run("", 4);
+        microAgg.run("C:\\Users\\ellie\\Documents\\Github\\UnstructedDataComparison\\dataFromErman\\twitterusers", 4);
     }
 
 }

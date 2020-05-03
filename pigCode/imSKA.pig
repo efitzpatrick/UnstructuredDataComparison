@@ -9,16 +9,21 @@ X = FOREACH B GENERATE COUNT(A);
 
 D = GROUP C BY a1;
 Result = FOREACH D GENERATE group, SUM(C.a3);*/
-grouping = Group qid_data BY (name, profilepictureurl, foursqr_id, id);
 
 --sort the data in ascending order of numbers of unique values in it
-QID_Data = ORDER grouping by $0, $1, $2, $3 DESC;
+qid_data = ORDER qid_data BY name, profilepictureurl, foursqr_id, id;
+
 --group above data by all attributes in QID_DATA
-group_QID = GROUP QID_Data by name;
+group_qid = GROUP qid_data ALL;
 
 --for each group in group_QID
-EQClass = FOREACH group_QID GENERATE group_QID, COUNT(group_QID);
+E = FOREACH group_qid{
+    RECORD_COUNT = GENERATE COUNT(qid_data);
     --eqClass = group_qid + count(group_qid)
+    eqClass = qid_data + RECORD_COUNT;
+};
+
+
 
 --mergeEquivalenceClass = empty array size of eq_class
 

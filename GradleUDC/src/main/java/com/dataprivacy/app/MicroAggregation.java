@@ -57,6 +57,7 @@ public class MicroAggregation extends Algorithms {
         }
         long microAggEndTime = System.nanoTime();
         System.out.println(runTime(microAggStartTime,microAggEndTime));
+        System.out.println(set);
     }
 
     public String[][] aggregate (int k) {
