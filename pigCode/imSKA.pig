@@ -22,10 +22,8 @@ EQClass = FOREACH group_QID GENERATE group_QID, COUNT(group_QID);
 
 --mergeEquivalenceClass = empty array size of eq_class
 
-        --for each row in eq class
+        --for each row in eq class merged equivalence class = merged equivalence class + eq class
 MEQ = FOREACH EQClass GENERATE merged equivalenceclass array at that point, eqClass;
-
-            --merged equivalence class = merged equivalence class + eq class
 
             --if merged equivalence class
                 --ncp_eq = ncp(mrged equivalence class)
